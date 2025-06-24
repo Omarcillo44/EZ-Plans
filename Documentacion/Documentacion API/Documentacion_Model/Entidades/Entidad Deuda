@@ -1,0 +1,27 @@
+---
+
+### entidad Deuda
+
+**descripción**
+Representa una deuda asociada a un miembro de una actividad, indicando quién es el acreedor y el monto adeudado.
+
+**atributos**
+
+* `id` (Integer): identificador único de la deuda, clave primaria con auto incremento.
+* `idMiembrosactividad` (MiembrosActividad): referencia al miembro de actividad al que corresponde la deuda (muchos a uno).
+* `idAcreedor` (Integer): identificador del usuario acreedor (clave foránea a `usuarios`).
+* `montoDeuda` (BigDecimal): cantidad monetaria que se debe, obligatorio.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE TABLE deudas (
+    id_deuda SERIAL PRIMARY KEY,
+    id_miembrosactividad INTEGER NOT NULL REFERENCES miembros_actividad(id_miembrosactividad),
+    id_acreedor INTEGER NOT NULL REFERENCES usuarios(id_usuario),
+    monto_deuda NUMERIC NOT NULL
+);
+```
+
+---
+

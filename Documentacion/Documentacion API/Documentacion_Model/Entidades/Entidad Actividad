@@ -1,0 +1,30 @@
+---
+
+### entidad Actividad
+
+**descripción**
+Representa una actividad dentro de un plan, con título, detalles, gasto acumulado y estado. Está asociada a un plan específico.
+
+**atributos**
+
+* `id` (Integer): identificador único de la actividad, clave primaria con auto incremento.
+* `idPlan` (Plan): referencia a la entidad Plan a la que pertenece la actividad (relación muchos a uno).
+* `tituloActividad` (String): nombre o título descriptivo de la actividad.
+* `gastoActividad` (BigDecimal): monto acumulado de gastos para esta actividad.
+* `detallesActividad` (String): descripción o detalles adicionales de la actividad.
+* `estadoActividad` (Boolean): indica si la actividad está activa (true) o no (false).
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE TABLE actividades (
+    id_actividad SERIAL PRIMARY KEY,
+    id_plan INTEGER NOT NULL REFERENCES planes(id_plan),
+    titulo_actividad TEXT NOT NULL,
+    gasto_actividad NUMERIC,
+    detalles_actividad TEXT,
+    estado_actividad BOOLEAN
+);
+```
+
+---

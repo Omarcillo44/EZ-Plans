@@ -1,0 +1,31 @@
+---
+
+### Entidad Plan
+
+**descripción**
+Entidad que representa un plan de gastos colaborativos, con su título, fecha, gastos acumulados, detalles y estado.
+
+**atributos**
+
+* `id` (Integer): identificador único, clave primaria con auto incrementación.
+* `tituloPlan` (String): título o nombre del plan.
+* `fechaPlan` (LocalDate): fecha relacionada con el plan.
+* `gastoPlan` (BigDecimal): suma total de gastos del plan.
+* `detallesPlan` (String): descripción o detalles adicionales del plan.
+* `estadoPlan` (Boolean): indica si el plan está activo (true) o no (false).
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE TABLE planes (
+    id_plan SERIAL PRIMARY KEY,
+    titulo_plan TEXT NOT NULL,
+    fecha_plan DATE NOT NULL,
+    gasto_plan NUMERIC,
+    detalles_plan TEXT,
+    estado_plan BOOLEAN
+);
+```
+
+---
+

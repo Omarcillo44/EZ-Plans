@@ -1,0 +1,50 @@
+---
+
+### entidad MiembrosContacto
+
+**descripción**
+Representa la relación entre un contacto y un miembro específico, permitiendo vincular contactos a miembros dentro de un plan.
+
+**atributos**
+
+* `id` (Integer): identificador único, clave primaria, autoincremental con secuencia.
+* `idContactos` (Contacto): relación many-to-one con la entidad Contacto.
+* `idMiembrocontacto` (Integer): referencia al ID del miembro relacionado.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE SEQUENCE miembros_contactos_id_miembroscontactos_seq START 1;
+
+CREATE TABLE miembros_contactos (
+    id_miembroscontactos INTEGER PRIMARY KEY DEFAULT nextval('miembros_contactos_id_miembroscontactos_seq'),
+    id_contactos INTEGER NOT NULL REFERENCES contactos(id_contactos),
+    id_miembrocontacto INTEGER NOT NULL
+);
+```
+
+---
+
+### entidad Contacto
+
+**descripción**
+Representa un contacto asociado a un usuario, usado para gestionar relaciones o referencias externas dentro de la app.
+
+**atributos**
+
+* `id` (Integer): identificador único, clave primaria, autoincremental con secuencia.
+* `idUsuario` (Usuario): relación many-to-one con la entidad Usuario que posee el contacto.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE SEQUENCE contactos_id_contactos_seq START 1;
+
+CREATE TABLE contactos (
+    id_contactos INTEGER PRIMARY KEY DEFAULT nextval('contactos_id_contactos_seq'),
+    id_usuario INTEGER NOT NULL REFERENCES usuarios(id_usuario)
+);
+```
+
+---
+

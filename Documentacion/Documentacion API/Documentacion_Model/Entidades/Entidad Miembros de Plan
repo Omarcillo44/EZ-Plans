@@ -1,0 +1,27 @@
+---
+
+### entidad MiembrosPlan
+
+**descripción**
+Representa la relación entre usuarios y planes, indicando qué usuarios son miembros de un plan y si tienen rol de administrador.
+
+**atributos**
+
+* `id` (Integer): identificador único del miembro-plan, clave primaria con auto incremento.
+* `idPlan` (Plan): referencia al plan al que pertenece el miembro (muchos a uno).
+* `idUsuario` (Usuario): referencia al usuario que es miembro del plan (muchos a uno).
+* `administrador` (Boolean): indica si el usuario es administrador del plan (true) o solo miembro (false). Valor por defecto es false.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE TABLE miembros_plan (
+    id_miembrosplan SERIAL PRIMARY KEY,
+    id_plan INTEGER NOT NULL REFERENCES planes(id_plan),
+    id_usuario INTEGER NOT NULL REFERENCES usuarios(id_usuario),
+    administrador BOOLEAN NOT NULL DEFAULT FALSE
+);
+```
+
+---
+

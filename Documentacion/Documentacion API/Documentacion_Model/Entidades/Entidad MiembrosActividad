@@ -1,0 +1,27 @@
+---
+
+### entidad MiembrosActividad
+
+**descripción**
+Modela la relación de usuarios que participan en una actividad específica, con la aportación económica que hacen.
+
+**atributos**
+
+* `id` (Integer): identificador único del miembro-actividad, clave primaria con auto incremento.
+* `idActividad` (Actividad): referencia a la actividad a la que pertenece este miembro (muchos a uno).
+* `idUsuario` (Integer): identificador del usuario participante (clave foránea a `usuarios`).
+* `aportacion` (BigDecimal): cantidad aportada por el usuario para esa actividad, obligatorio.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE TABLE miembros_actividad (
+    id_miembrosactividad SERIAL PRIMARY KEY,
+    id_actividad INTEGER NOT NULL REFERENCES actividades(id_actividad),
+    id_usuario INTEGER NOT NULL REFERENCES usuarios(id_usuario),
+    aportacion NUMERIC NOT NULL
+);
+```
+
+---
+

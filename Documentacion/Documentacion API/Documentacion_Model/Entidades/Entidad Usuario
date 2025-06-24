@@ -1,0 +1,36 @@
+---
+
+### entidad Usuario
+
+**descripción**
+Representa un usuario del sistema con datos de acceso y perfil, implementando `UserDetails` para integración con Spring Security.
+
+**atributos**
+
+* `id` (Integer): identificador único, secuencia autoincremental, clave primaria.
+* `celularUsuario` (String): número celular único que funciona como nombre de usuario para login.
+* `pass` (String): contraseña cifrada del usuario.
+* `nombreUsuario` (String): nombre propio del usuario.
+* `apellidosUsuario` (String): apellidos del usuario.
+
+**implementación de UserDetails**
+Permite que la entidad sea compatible con Spring Security, devolviendo autoridades vacías y estados activos por defecto.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE SEQUENCE usuarios_id_usuario_seq START 1;
+
+CREATE TABLE usuarios (
+    id_usuario INTEGER PRIMARY KEY DEFAULT nextval('usuarios_id_usuario_seq'),
+    celular_usuario VARCHAR UNIQUE NOT NULL,
+    pass VARCHAR NOT NULL,
+    nombre_usuario VARCHAR NOT NULL,
+    apellidos_usuario VARCHAR NOT NULL
+);
+```
+
+---
+
+Listo para la síntesis o siguiente entidad.
+

@@ -1,0 +1,31 @@
+---
+
+### entidad Pago
+
+**descripción**
+Representa un pago realizado para una deuda específica, con información del monto, forma y comprobante.
+
+**atributos**
+
+* `id` (Integer): identificador único, clave primaria, autoincremental mediante secuencia.
+* `idDeuda` (Deuda): relación many-to-one con la deuda a la que corresponde el pago.
+* `montoPago` (BigDecimal): cantidad pagada.
+* `formaPago` (Boolean): tipo o método de pago (valor booleano, puede representar efectivo o tarjeta, por ejemplo).
+* `comprobantePago` (String): cadena base64 o ruta del comprobante del pago.
+
+**equivalente en sql (Postgres)**
+
+```sql
+CREATE SEQUENCE pagos_id_pago_seq START 1;
+
+CREATE TABLE pagos (
+    id_pago INTEGER PRIMARY KEY DEFAULT nextval('pagos_id_pago_seq'),
+    id_deuda INTEGER NOT NULL REFERENCES deudas(id_deuda),
+    monto_pago NUMERIC NOT NULL,
+    forma_pago BOOLEAN,
+    comprobante_pago TEXT
+);
+```
+
+---
+
