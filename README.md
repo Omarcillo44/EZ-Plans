@@ -21,6 +21,9 @@ La aplicación resuelve el problema común de gestionar gastos en grupo de maner
 
 ## 🚀 Cómo ejecutar el proyecto
 
+### APK
+Para disfrutar directamente, basta con ejecutar el APK y usar alguna de las credenciales de prueba para ingresar.
+
 ### Prerequisitos
 
 #### Para la API (Spring Boot):
