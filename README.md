@@ -304,7 +304,6 @@ android {
 - **Omar Lorenzo Pacheco**
 - **Jimena Marlene Garrido Reyes**  
 - **Mauricio Teodoro Rosoales**
-- **Rostro Pérez Donovan Tadeo**
 
 ---
 
